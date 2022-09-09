@@ -1,0 +1,10 @@
+kind: Pod                              
+apiVersion: v1                     
+metadata:                           
+  name: testpod                  
+spec:                                    
+  containers:                      
+    - name: c00                     
+      image: shubhamsonirg/myimage        
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Shubham; sleep 5 ; done"]
+  restartPolicy: Never         # Defaults to Always

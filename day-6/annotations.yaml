@@ -1,0 +1,13 @@
+--- ## now we are adding the annotations in the existing file
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod
+  annotations:
+    description: "This is my second manifest file for kubernetes !!!"
+spec:
+  containers:
+    - name: c00
+      image: shubhamsonirg/myimage
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Shubham; sleep 5 ; done"]
+  restartPolicy: Never ## default is always

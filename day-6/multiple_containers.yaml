@@ -1,0 +1,17 @@
+--- ## Now we want to run the multiple containers with the use of same manifest with third manifest
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod
+  annotations:
+    description: "This is my second manifest file for kubernetes !!!"
+spec:
+  containers:
+    - name: c00
+      image: shubhamsonirg/myimage
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Shubham; sleep 5 ; done"]
+    - name: c01
+      image: shubhamsonirg/myimage
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Soni; sleep 5 ; done"]
+  restartPolicy: Never ## default is always
+
