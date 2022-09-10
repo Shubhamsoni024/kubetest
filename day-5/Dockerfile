@@ -20,18 +20,18 @@ EXPOSE 80
 MAINTAINER 'Shubham Soni with email: shubham.soni@rglabs.net'
 
 ### Copy the test file to test the copy in docker file
-COPY testfile /var/www/html
+#COPY testfile /var/www/html
 
 ## Adding the gz file via ADD
-ADD pma_local.tar.gz /var/www/
+#ADD pma_local.tar.gz /var/www/html/
 
 ### Adding the gz pma in the docker container for test
-WORKDIR /var/www/html
-RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
+#WORKDIR /var/www/html
+#RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip
 
-CMD uznip /var/www/html/phpMyAdmin-5.2.0-all-languages.zip
+#RUN uznip /var/www/html/phpMyAdmin-5.2.0-all-languages.zip
 
-CMD mv /var/www/html/phpMyAdmin-5.2.0-all-languages /var/www/html/pma
+#RUN mv /var/www/html/phpMyAdmin-5.2.0-all-languages /var/www/html/pma
 
 ### Environment variable
-ENV myname my_apache
+#ENV myname my_apache

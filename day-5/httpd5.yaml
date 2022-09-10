@@ -8,8 +8,10 @@ metadata:
 spec:
   containers:
     - name: c00
-      image: shubhamsonirg/myimage
+      image: httpd
+      ports:
+        - containerPort: 80
       env:
         - name: MYNAME
           value: SONI
-  restartPolicy: Never ## Default to Always
+          #restartPolicy: Never ## Default to Always
