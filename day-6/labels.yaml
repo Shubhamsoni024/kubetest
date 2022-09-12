@@ -1,0 +1,32 @@
+--- ## 1) Now we are working on the labels with kubernetes
+kind: Pod
+apiVersion: v1
+metadata:
+  name: jaipurpod
+  annotations:
+    description: "Now we are working on the labels with kubernetes"
+  labels:
+    env: developments
+    class: pods
+    love: devops
+spec:
+  containers:
+    - name: c00
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Shubham; sleep 5 ; done"]
+      ## environment variable
+      env:
+        - name: CONT-1
+          value: CONTAINER-1
+
+    - name: c01
+      image: httpd
+      env:
+        - name: CONT-2
+          value: CONTAINER-2
+      ports:
+        - containerPort: 80
+
+  #restartPolicy: Never ## default to always
+
+

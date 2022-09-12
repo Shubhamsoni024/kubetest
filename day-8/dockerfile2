@@ -1,0 +1,11 @@
+FROM centos:7
+
+MAINTAINER 'Shubham soni'
+
+RUN yum update -y && yum -y install httpd
+
+RUN echo "this is webserver test !!!" /var/www/html/index.html
+
+CMD [“/usr/sbin/httpd”, “-D”, “FOREGROUND”]
+
+EXPOSE 80

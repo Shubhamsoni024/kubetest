@@ -1,0 +1,37 @@
+--- ## Now we are working with the ReplicaSet
+    ## ReplicaSet works with Setbased selector
+
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: replicaset
+  annotations:
+    description: "ReplicaSet works with Setbased selector !!"
+  labels:
+    myname: shubham
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - {key: myname, operator: In, values: [shubham, subham, Shubham]}
+      - {key: env, operator: NotIn, values: [production]}
+  template:
+    metadata:
+      name: testpod7
+      annotations: 
+        description: "This is annotations for this pod !!!"
+      labels:
+        myname: shubham
+    spec:
+      containers:
+        - name: c00
+          image: httpd
+          env:
+            - name: MYNAME
+              value: REPLICA-SET
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        hardware: t2.micro
+      #restartPolicy: Never ## default is always
+
