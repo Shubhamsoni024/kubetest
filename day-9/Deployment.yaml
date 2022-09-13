@@ -1,0 +1,37 @@
+--- ## Now we are working with the deployment in the kubernetes
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mydeployment
+  annotations: 
+    description: "Now we are working with the deployment in the kubernetes !!!"
+  labels:
+    env: development
+    class: pods
+    object: deployment
+    myname: deploy
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - {key: myname, operator: In, values: [deploy, deployment, Deployment] }
+      - {key: env, operator: NotIn, values: [shubham, subham, Shubham]}
+  template:
+    metadata:
+      name: testpod
+      annotations: 
+        description: "this is my testpod under deployment !!"
+      labels:
+        myname: deploy
+    spec:
+      containers:
+        - name: c00
+          image: httpd
+          env:
+            - name: OBJECTTYPE
+              value: DEPLOYMENT
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        hardware: t2.micro
+
