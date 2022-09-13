@@ -30,5 +30,5 @@ spec:
               value: APACHE-SERVER
           ports:
             - containerPort: 80
-      nodeSelector:
-        hardware: t2.micro
+              #      nodeSelector:
+              #hardware: t2.micro
