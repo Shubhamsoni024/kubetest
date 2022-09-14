@@ -1,0 +1,14 @@
+--- ## Now we are going to use the NodePort to access the apache via internet
+kind: Service
+apiVersion: v1
+metadata:
+  name: nodeportservice
+  annotations:
+    description: "Now we are going to use the NodePort to access the apache via internet !!"
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    object: deploy
+  type: NodePort

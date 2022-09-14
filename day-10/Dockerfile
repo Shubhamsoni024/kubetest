@@ -19,6 +19,9 @@ COPY testfile /var/www/html/testfile.txt
 ### Adding the phpmyadmin inside the docker container 
 ADD https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-all-languages.zip /var/www/html/
 
+### adding the command in the ~/.bashrc
+RUN echo "/usr/sbin/httpd -D FOREGROUND" >> ~/.bashrc
+
 ## Changing the working directory
 WORKDIR /var/www/html/
 

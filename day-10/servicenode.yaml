@@ -1,0 +1,37 @@
+--- ## Now we want two seperate pods to communicate with each other within the same node
+kind: Deployment
+apiVersion: apps/v1
+metadata: 
+  name: mydeployment
+  annotations: 
+    description: "Now we want two seperate pods to communicate with each other within the same node !!"
+  labels:
+    env: development
+    class: pods
+    object: deploy
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - {key: object, operator: In, values: [development, deploy, mydevlopment]}
+      - {key: myname, operator: NotIn, values: [subham, shubham, SHUBHAM]}
+  template:
+    metadata:
+      name: testpod
+      annotations: 
+        description: "this is testpod annotation !!"
+      labels:
+        object: deploy
+    spec:
+      containers: 
+        - name: c01
+          image: shubhamsonirg/myimage
+          #command: ["/bin/bash", "-c", "while true; do echo Hello-Shubham; sleep 5 ; done"]
+          env:
+            - name: MYNAME
+              value: SHUBHAM-APACHE
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        hardware: t2.micro
+          
