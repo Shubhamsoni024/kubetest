@@ -1,0 +1,19 @@
+--- ## Now we are studying about the kubernetes networking
+kind: Pod
+apiVersion: v1
+metadata:
+  name: testpod
+  annotations:
+    description: "Now we are studying about the kubernetes networking"
+  labels:
+    env: development
+    class: pods
+spec:
+  containers:
+    - name: c00
+      image: nginx
+      ports:
+        - containerPort: 80
+  
+  nodeSelector:
+    hardware: t2.micro
