@@ -1,0 +1,30 @@
+--- ## Now we are working with volumes concept in kubernetes 
+### first one is emptydir volume type shared between containers within a pod
+kind: Pod
+apiVersion: v1
+metadata:
+  name: myvolumeemtydir
+  annotations: 
+    description: "Now we are working with volumes concept in kubernetes !!"
+spec:
+  containers:
+    - name: c00
+      image: shubhamsonirg/myimage
+      env:
+        - name: MYNAME
+          value: EMPTY-VOLUME
+      ports:
+        - containerPort: 80
+      volumeMounts:
+        - name: xchange
+          mountPath: "/tmp/xchange"
+
+    - name: c01
+      image: ubuntu
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Shubham; sleep 5 ; done"]
+      volumeMounts:
+        - name: xchange
+          mountPath: "/tmp/data"
+  volumes:
+    - name: xchange 
+      emptyDir: {}
