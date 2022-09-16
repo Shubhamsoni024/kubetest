@@ -1,0 +1,11 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx
+spec:
+  containers: 
+    - name: c00
+      image: nginx
+      resources:
+        limits:
+          cpu: "1"

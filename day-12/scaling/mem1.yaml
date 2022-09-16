@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mem-1
+spec:
+  containers:
+    - name: c00
+      image: httpd
+      resources:
+        limits:
+          memory: "800Mi"
+        requests:
+          memory: "600Mi"

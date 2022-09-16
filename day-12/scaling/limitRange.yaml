@@ -1,0 +1,12 @@
+--- ## now we are defining the default cpu range on the namespaces
+kind: LimitRange
+apiVersion: v1
+metadata:
+  name: cpu-limit
+spec:
+  limits:
+  - default:
+      cpu: 1
+    defaultRequest:
+      cpu: 0.5
+    type: Container

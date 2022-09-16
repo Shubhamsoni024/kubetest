@@ -1,0 +1,8 @@
+--- ## Now we are creating with our own namespace
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: dev
+  labels:
+    name: dev
+    env: development

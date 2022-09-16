@@ -1,0 +1,12 @@
+--- ## Now we are defining the minimum and the maximum values for the resources
+kind: LimitRange
+apiVersion: v1
+metadata:
+  name: min-max-namespaces
+spec:
+  limits:
+  - max:
+      memory: 1Gi
+    min:
+      memory: 500Mi
+    type: Container
