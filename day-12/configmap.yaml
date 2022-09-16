@@ -1,0 +1,23 @@
+--- ## Working with the configMap
+kind: Pod
+apiVersion: v1
+metadata:
+  name: myvolconfig
+spec:
+  containers:
+    - name: c00
+      image: centos
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Shubham; sleep 5 ; done"]
+      env:
+        - name: MYNAME
+          value: SHUBHAM-CONFIGMAP
+      volumeMounts:
+        - name: testconfigmap
+          mountPath: "/tmp/config"
+  volumes:
+    - name: testconfigmap
+      configMap:
+        name: mymap
+        items:
+          - key: sample.conf
+            path: sample.conf
