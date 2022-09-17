@@ -1,0 +1,20 @@
+--- # if you want to run multiple task at once with multiple pod
+kind: Job
+apiVersion: batch/v1
+metadata:
+  name: testjob
+spec:
+  parallelism: 5 # Runs number of  pods in parallel
+  activeDeadlineSeconds: 10 # After running the specified command or task it should wait for 10 seconds more then terminate the pod
+  template:
+    metadata:
+      name: testjob
+    spec:
+      containers:
+        - name: counter
+          image: centos:7
+          args:
+            - /bin/bash
+            - -c
+            - echo "hello shubham"; sleep 30
+      restartPolicy: Never

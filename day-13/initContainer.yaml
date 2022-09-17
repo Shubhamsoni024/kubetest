@@ -1,0 +1,30 @@
+--- ## we are working with the init containers in the kubernetes
+kind: Pod
+apiVersion: v1
+metadata:
+  name: initcontainer
+spec:
+  initContainers:
+    - name: c1
+      image: centos
+      args:
+        - /bin/bash
+        - -c 
+        - echo "like and subscribe to my channel !!" > /tmp/xchange/testfile; sleep 30;
+      volumeMounts:
+        - name: xchange
+          mountPath:  "/tmp/xchange"
+  containers:
+    - name: c2
+      image: ubuntu
+      args:
+        - /bin/bash
+        - -c
+        - while true; do echo `cat /tmp/data/testfile`; sleep 5; done
+      volumeMounts:
+        - name: xchange
+          mountPath: "/tmp/data"
+  volumes:
+    - name: xchange
+      emptyDir: {}
+      

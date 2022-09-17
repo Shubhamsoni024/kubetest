@@ -1,0 +1,19 @@
+--- ## jobs in kubernetes
+    ## in kubernetes there is another object name jobs 
+    # jobs are two type fist container that do the task and stop and second is once init task complete then only another pod created
+kind: Job
+apiVersion: batch/v1 # here we have changed the apiversion
+metadata:
+  name: testjob
+  annotations:
+    description:  "this job annotations !!"
+spec:
+  template:
+    metadata:
+      name: testjob ## podname
+    spec:
+      containers:
+        - name: counter
+          image: centos:7
+          command: ["bin/bash", "-c", "echo hello shubham; sleep 5"]
+      restartPolicy: Never # default is always

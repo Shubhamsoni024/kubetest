@@ -1,0 +1,18 @@
+--- ## now we are working the the cron utility in the kubernetes
+kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: mycronjob
+  annotations: 
+    description: "Now we are working the the cron utility in the kubernetes"
+spec:
+  schedule: "*  *  *  *  *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: shubham
+              image: ubuntu
+              command: ["/bin/bash", "-c", "echo Technical-Guftgu; sleep 5"]
+          restartPolicy: Never
